@@ -84,14 +84,19 @@ Each submission should include:
 
 Do not submit a candidate merely because it is a style preference, an isolated bug, a feature request, or a proposal to rewrite the project in another technology.
 
-## Git Workflow
+## Fork and Pull Request Workflow
 
-1. Create a branch named `review/<your-name>`.
-2. Copy or update your assigned file in `submissions/`.
-3. Commit only evidence you have personally checked.
-4. Open a pull request into `main`.
-5. Ask at least one other member to check the evidence links and reasoning.
-6. Resolve factual questions before merging.
+Start from the [direct Fork page](https://github.com/hahaArthur17/compx574-logseq-code-review/fork).
+
+1. Fork `hahaArthur17/compx574-logseq-code-review` into your own GitHub account.
+2. In your fork, create a branch named `review/<your-name>`.
+3. Update only your assigned file in `submissions/`, using the canonical template.
+4. You may ask AI to organize and analyze your verified contribution evidence.
+5. Personally check every AI-assisted claim, repository link, test result, and scope statement.
+6. Commit and push the updated member file to your fork.
+7. Open a pull request from your fork into `hahaArthur17/compx574-logseq-code-review:main`.
+8. Ask at least one other member to review the evidence links and reasoning.
+9. Resolve factual questions before the pull request is merged.
 
 Suggested branch names:
 
