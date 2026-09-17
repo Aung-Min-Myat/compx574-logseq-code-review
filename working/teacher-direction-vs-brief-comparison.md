@@ -128,7 +128,7 @@ This comparison was acted on the same day:
 | --- | --- |
 | `README.md` | Rewrote the report direction around architecture-level findings; added the situation note, the multi-repository map, the five issue themes (A1-A5), the four positive-choice themes (P1-P4), a corrected internal schedule, and a stricter Definition of Done. |
 | `templates/member-review-template.md` | Added a user-impact field, a staged "migration / improvement direction" field, an explicit "why this is architectural, not an isolated bug" field, a reviewed-commit field, and a repository column. |
-| `submissions/member-1-arthur-gao.md` | Rewritten. Now records all **five** contributions (the earlier version listed three and omitted the merged #13071 and the local #1179), and replaces the three module-local candidates with three architecture-level candidates. |
+| `submissions/member-1-arthur-gao.md` | Rewritten. Now records all **five** contributions (the earlier version listed three and omitted the merged #13071 and the #1179 contribution, whose [PR #13296](https://github.com/logseq/logseq/pull/13296) was later closed as a duplicate of maintainer [#13287](https://github.com/logseq/logseq/pull/13287)), and replaces the three module-local candidates with three architecture-level candidates. |
 | `working/candidate-register.md` | Rebuilt around architecture-level candidates; old candidates marked superseded, merged, or rejected, with reasons. |
 | `working/selection-decisions.md` | Added a pre-selection decisions block (the A/B duplicate question, the scope slice for the dual-architecture theme, and the three positive choices). |
 | `report/final-report.md` | Skeleton updated to require the seven-part issue structure and to name the maintainers' surface-area-reduction tension. |

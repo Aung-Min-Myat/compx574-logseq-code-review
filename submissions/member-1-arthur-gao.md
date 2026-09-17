@@ -11,7 +11,7 @@
 
 ## 2. Contribution and Familiarity Evidence
 
-Five upstream contributions to the Logseq organisation. Four were merged; the fifth is a verified local fix with no pull request. Together they establish direct familiarity with the CLI/DB-worker seam, the DB query pipeline, editor async state, mobile development tooling, and the DB property/class layer.
+Five upstream contributions to the Logseq organisation. Four were merged; the fifth was submitted as a verified fix, then closed as a duplicate after a maintainer had already opened an overlapping PR. Together they establish direct familiarity with the CLI/DB-worker seam, the DB query pipeline, editor async state, mobile development tooling, and the DB property/class layer.
 
 | Type | Repository | Reference | Status | Work | Areas learned |
 | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ Five upstream contributions to the Logseq organisation. Four were merged; the fi
 | PR | `logseq/logseq` | [#13154](https://github.com/logseq/logseq/pull/13154) (issue [logseq/db-test#1087](https://github.com/logseq/db-test/issues/1087), formerly `logseq/logseq#12979`) | **Merged** 1 Sep 2026 as [`4231bf3`](https://github.com/logseq/logseq/commit/4231bf309172cae619d65cec10eae98e8706b704) | Fixed a stale delayed refocus race after code-block conversion; added root-cause state-condition tests | Editor async state, delayed callbacks, focus ownership, race-condition testing |
 | PR | `logseq/logseq` | [#13121](https://github.com/logseq/logseq/pull/13121) (issue [logseq/logseq#13010](https://github.com/logseq/logseq/issues/13010)) | **Merged** 31 Aug 2026 as [`de2ecab`](https://github.com/logseq/logseq/commit/de2ecabf6d6891a41c104d7c4041797bcaa54b3e) | Repaired the opt-in HTTPS mobile development server, document-root resolution, and Android development documentation | Shadow CLJS build configuration, Capacitor/WebView dev URLs, cross-layer configuration drift |
 | PR | `logseq/logseq` | [#13118](https://github.com/logseq/logseq/pull/13118) (issue [logseq/db-test#1089](https://github.com/logseq/db-test/issues/1089), formerly `logseq/logseq#12951`) | **Merged** 26 Aug 2026 as [`835c031`](https://github.com/logseq/logseq/commit/835c031d69d1771baa2f11bbb303c0c6e952de09) | Added regression coverage for scalar custom-query rendering after upstream had already refactored the production path | Query result shapes, renderer contracts, test-only contribution strategy |
-| Local commit | `logseq/logseq` | `c2600c83bf` (issue [logseq/db-test#1179](https://github.com/logseq/db-test/issues/1179)) | **No PR** — fix implemented and verified | Removed `Root Tag` from the `Extends` candidate list and prevented it being re-added via "New option"; updated an E2E helper that depended on the old workaround | DB class/property layer, property picker state, worker-side option generation, E2E helper coupling |
+| PR | `logseq/logseq` | [#13296](https://github.com/logseq/logseq/pull/13296) (issue [logseq/db-test#1179](https://github.com/logseq/db-test/issues/1179)) | **Closed as duplicate** — maintainer [#13287](https://github.com/logseq/logseq/pull/13287) had already opened an overlapping PR; local commit [`617ec5c`](https://github.com/logseq/logseq/commit/617ec5c3b0) and fork branch retained | Removed `Root Tag` from the `Extends` candidate list and prevented it being re-added via "New option"; updated an E2E helper that depended on the old workaround | DB class/property layer, property picker state, worker-side option generation, E2E helper coupling |
 
 ### Maintainer feedback
 
@@ -39,7 +39,7 @@ Across five contributions, the same structural pattern kept appearing: **a bound
 | DB query result pipeline | `logseq/logseq` | `src/main/frontend/components/query.cljs`, `src/main/frontend/components/query/result.cljs`, `src/main/frontend/db/query_custom.cljs`, `src/main/frontend/db/query_react.cljs`, `deps/db/src/logseq/db/common/view.cljs` | [PR #13118](https://github.com/logseq/logseq/pull/13118) | Reproduced, traced two successive `is not ISeqable` failure paths, then discovered upstream had refactored the whole path |
 | Editor async state and focus ownership | `logseq/logseq` | `src/main/frontend/handler/events.cljs`, `src/main/frontend/handler/editor.cljs`, `src/test/frontend/handler/events_test.cljs` | [PR #13154](https://github.com/logseq/logseq/pull/13154) | Reproduced the macOS symptom, identified the stale 100 ms refocus callback, implemented a guarded refocus, added root-cause assertions |
 | Mobile development configuration layers | `logseq/logseq` | `shadow-cljs.edn`, `scripts/src/logseq/tasks/dev/mobile.clj`, `docs/develop-logseq-on-mobile.md`, Capacitor-generated dev URL | [PR #13121](https://github.com/logseq/logseq/pull/13121) | Reproduced TLS and path failures, traced generated URLs and runtime module paths, built an APK, cold-started it in a Pixel 9 emulator |
-| DB class/property layer and property picker | `logseq/logseq` | `src/main/frontend/worker/handler/property.cljs`, `src/main/frontend/components/property/value.cljs`, `src/main/frontend/components/select.cljs`, `deps/db/src/logseq/db/frontend/class.cljs`, `deps/outliner/...` | Local commit `c2600c83bf` | Reproduced in a real Electron UI twice, captured worker and `:app` runtime evidence, confirmed root cause, implemented a minimal fix and tests |
+| DB class/property layer and property picker | `logseq/logseq` | `src/main/frontend/worker/handler/property.cljs`, `src/main/frontend/components/property/value.cljs`, `src/main/frontend/components/select.cljs`, `deps/db/src/logseq/db/frontend/class.cljs`, `deps/outliner/...` | [PR #13296](https://github.com/logseq/logseq/pull/13296), closed as duplicate of maintainer [#13287](https://github.com/logseq/logseq/pull/13287) | Reproduced in a real Electron UI twice, captured worker and `:app` runtime evidence, confirmed root cause, implemented a minimal fix and tests |
 
 ### Whole-system material examined
 
@@ -68,7 +68,7 @@ Across five contributions, the same structural pattern kept appearing: **a bound
 | #1087 / PR #13154 | `logseq/logseq` | `upstream/master` @ `3b9c0d0b92`; merged as `4231bf3` |
 | #13010 / PR #13121 | `logseq/logseq` | `master` at the time of the fix; merged as `de2ecab` |
 | #12951 / PR #13118 | `logseq/logseq` | Old baseline [`ab57092`](https://github.com/logseq/logseq/commit/ab5709218b8ae51acb055d5e6441cdb519c1f575) vs upstream `3b9c0d0b92`; merged as `835c031` |
-| #1179 | `logseq/logseq` | `upstream/master` @ [`e963b91d`](https://github.com/logseq/logseq/commit/e963b91ddf55d160371108fe0cb0ad1191fc8b91); local commit `c2600c83bf` |
+| #1179 | `logseq/logseq` | Reproduced at [`e963b91d`](https://github.com/logseq/logseq/commit/e963b91ddf55d160371108fe0cb0ad1191fc8b91); final fix based on `a11870e36e`, submitted as [#13296](https://github.com/logseq/logseq/pull/13296) at [`617ec5c`](https://github.com/logseq/logseq/commit/617ec5c3b0), then closed as duplicate of maintainer [#13287](https://github.com/logseq/logseq/pull/13287) |
 
 ## 4. Candidate Issues
 
